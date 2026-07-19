@@ -1,6 +1,10 @@
 
 
-https://github.com/user-attachments/assets/09fe64d8-816f-4c2d-b197-130c3843218e
+
+
+https://github.com/user-attachments/assets/0794267a-b9ce-43be-9a61-ea6ddf05f57c
+
+
 
 #  Passive Security & Compliance Audit Report
 ###  MITRE ATT&CK Reconnaissance Mapping — Individual Deliverable (Week 2)
@@ -45,8 +49,8 @@ The assessment uncovered active configuration gaps that an external threat actor
 ##  3. Deep-Dive Findings & Adversary Vector Analysis
 
 ### Find 1: Outbound Email Spoofing Vulnerability (SPF Softfail & Missing DMARC)
-* **Observed String:** `v=spf1 include:_spf.mail.hostinger.com include:_spf.reach.hostinger.com ~all`[cite: 2]
-* **Threat Matrix Impact:** Threat actors can execute **T1585.002 (Email Spoofing Infrastructure setup)**[cite: 2]. Because the domain uses a loose softfail mechanism (`~all`) and completely lacks a `_dmarc` policy, receiving mail servers are given no explicit mandate to discard or reject unauthorized mail streams impersonating `@safexsolutions.com`[cite: 2]. This facilitates high-success corporate phishing or Business Email Compromise (BEC) campaigns targeting staff and vendors[cite: 2].
-* **Remediation Action:** Move to a strict hardfail mechanism (`-all`)[cite: 2]. Publish a foundational DMARC TXT record under `_dmarc.safexsolutions.com`[cite: 2]: 
+* **Observed String:** `v=spf1 include:_spf.mail.hostinger.com include:_spf.reach.hostinger.com ~all`
+* **Threat Matrix Impact:** Threat actors can execute **T1585.002 (Email Spoofing Infrastructure setup)**. Because the domain uses a loose softfail mechanism (`~all`) and completely lacks a `_dmarc` policy, receiving mail servers are given no explicit mandate to discard or reject unauthorized mail streams impersonating `@safexsolutions.com`[cite: 2]. This facilitates high-success corporate phishing or Business Email Compromise (BEC) campaigns targeting staff and vendors.
+* **Remediation Action:** Move to a strict hardfail mechanism (`-all`)[cite: 2]. Publish a foundational DMARC TXT record under `_dmarc.safexsolutions.com`: 
   ```text
  
