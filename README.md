@@ -7,7 +7,7 @@ https://github.com/user-attachments/assets/0794267a-b9ce-43be-9a61-ea6ddf05f57c
 
 
 #  Passive Security & Compliance Audit Report
-###  MITRE ATT&CK Reconnaissance Mapping — Individual Deliverable (Week 2)
+###  MITRE ATT&CK Reconnaissance Mapping — Individual Deliverable 
 
 **Project Name:** MITRE ATT&CK Mapping Module  
 **Target Domain:** `safexsolutions.com`  
@@ -40,9 +40,9 @@ The assessment uncovered active configuration gaps that an external threat actor
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **WHOIS Metadata Lookup** | Reconnaissance | **T1596.002** Search Open Technical Databases: WHOIS | Registrar (`HOSTINGER operations, UAB`) and domain status flags are visible. Registrant contact metadata is obfuscated via privacy abuse-proxy service (`abuse-tracker@hostinger.com`). | **Low** | **M1037:** Maintain active privacy proxy services to block raw harvester scripts and target profiling. |
 | **crt.sh Certificate Search** | Reconnaissance | **T1596.003** Search Open Technical Databases: Digital Certificates | Disclosed an active subdomain blueprint layout (`clinic.`, `healthcare.`, `sdc.`, `trust.`, `smoke.`, and `gpuhosting.safexsolutions.com`) issued within short temporal intervals. | **Medium** | **M1035:** Decommission unused staging points. Restrict staging visibility via internal VPN gateways or source IP restrictions[cite: 2]. |
-| **Shodan Host Query** | Reconnaissance | **T1596.005** Search Open Technical Databases: Scan Databases | Hostname query returned zero raw results, verifying the origin server sits completely shielded behind a managed CDN platform (`Hostinger CDN / hcdn`)[cite: 2]. | **Info** | **No Action:** Maintain the current CDN layer layout. Ensure future test subdomains do not expose origin routing[cite: 2]. |
-| **DNS TXT Record Query** | Reconnaissance | **T1590.002** Gather Victim Network Information: DNS Properties | Public query exposed an SPF record configured with a loose softfail qualifier (`~all`). No organizational DMARC (`_dmarc`) policy record exists[cite: 2]. | **High** | **M1049:** Restructure SPF mechanism to hardfail (`-all`). Deploy strict organizational DMARC records (`p=quarantine` or `p=reject`)[cite: 2]. |
-| **curl HTTP Header Inspection** | Reconnaissance | **T1592.002** Gather Victim Host Information: Software | Response exposed explicit technology stacks via `X-Powered-By: HostingerWebsiteBuilder` and `Server: hcdn`. Lacks full script-constraining CSP and `X-Frame-Options`[cite: 2]. | **High** | **M1037:** Deploy missing header controls at the edge. Strip runtime software identifiers to mitigate platform-specific vulnerability targeting[cite: 2]. |
+| **Shodan Host Query** | Reconnaissance | **T1596.005** Search Open Technical Databases: Scan Databases | Hostname query returned zero raw results, verifying the origin server sits completely shielded behind a managed CDN platform (`Hostinger CDN / hcdn`)[cite: 2]. | **Info** | **No Action:** Maintain the current CDN layer layout. Ensure future test subdomains do not expose origin routing |
+| **DNS TXT Record Query** | Reconnaissance | **T1590.002** Gather Victim Network Information: DNS Properties | Public query exposed an SPF record configured with a loose softfail qualifier (`~all`). No organizational DMARC (`_dmarc`) policy record exists[cite: 2]. | **High** | **M1049:** Restructure SPF mechanism to hardfail (`-all`). Deploy strict organizational DMARC records (`p=quarantine` or `p=reject`) |
+| **curl HTTP Header Inspection** | Reconnaissance | **T1592.002** Gather Victim Host Information: Software | Response exposed explicit technology stacks via `X-Powered-By: HostingerWebsiteBuilder` and `Server: hcdn`. Lacks full script-constraining CSP and `X-Frame-Options` | **High** | **M1037:** Deploy missing header controls at the edge. Strip runtime software identifiers to mitigate platform-specific vulnerability targeting[cite: 2]. |
 
 ---
 
